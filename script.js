@@ -125,3 +125,18 @@ if (navToggleBtn) {
     navMenu.classList.toggle("show");
   });
 }
+const accordionBtns = document.querySelectorAll(".accordion-btn");
+
+accordionBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const content = btn.nextElementSibling;
+
+    content.classList.toggle("active");
+
+    if (content.style.maxHeight) {
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
+});
