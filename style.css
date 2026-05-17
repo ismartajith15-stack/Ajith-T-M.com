@@ -549,3 +549,22 @@ body.dark-mode .setting-item label {
 .setting-item label {
   color: #111;           /* black text for labels */
 }
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding: 0 10px;
+}
+
+.accordion-content.active {
+  padding: 10px;
+}
+
+.accordion-content p {
+  margin-bottom: 10px;
+}
+
+.home-btn {
+  display: inline-block;
+  margin-top: 10px;
+}
