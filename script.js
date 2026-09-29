@@ -114,29 +114,33 @@ if (animationToggle) {
   });
 
 });
-// =========================
-// MOBILE NAV TOGGLE FIX
-// =========================
-const navToggleBtn = document.getElementById("nav-toggle");
-const navMenu = document.querySelector(".nav-links");
+// ================================
+// MOBILE MENU
+// ================================
 
-if (navToggleBtn) {
-  navToggleBtn.addEventListener("click", () => {
-    navMenu.classList.toggle("show");
-  });
+const navToggle = document.getElementById("nav-toggle");
+const navLinks = document.querySelector(".nav-links");
+
+if (navToggle && navLinks) {
+
+    navToggle.addEventListener("click", function () {
+        navLinks.classList.toggle("show");
+    });
+
+    // Close mobile menu after selecting a section
+    document.querySelectorAll(".nav-links a").forEach(function(link) {
+
+        link.addEventListener("click", function() {
+            navLinks.classList.remove("show");
+
+            // Move page to the selected section
+            setTimeout(function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            }, 100);
+        });
+
+    });
 }
-const accordionBtns = document.querySelectorAll(".accordion-btn");
-
-accordionBtns.forEach(btn => {
-  btn.addEventListener("click", () => {
-    const content = btn.nextElementSibling;
-
-    content.classList.toggle("active");
-
-    if (content.style.maxHeight) {
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    }
-  });
-});
