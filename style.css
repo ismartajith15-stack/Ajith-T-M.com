@@ -1234,3 +1234,47 @@ body.no-anim *::after {
     max-width: 100%;
     box-sizing: border-box;
 }
+/* =========================================
+   MOBILE MENU - CLOSE & MOVE UP FIX
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-15px);
+        transition: 
+            max-height 0.4s ease,
+            opacity 0.3s ease,
+            transform 0.4s ease,
+            visibility 0.3s ease;
+    }
+
+    .nav-links.show {
+        max-height: 800px;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        overflow-y: auto;
+    }
+
+    /* Header always stays at the top */
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 9999;
+    }
+
+    /* When menu closes, it goes back up */
+    .nav-links:not(.show) {
+        transform: translateY(-20px);
+        pointer-events: none;
+    }
+}
